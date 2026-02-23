@@ -10,8 +10,8 @@ Prof. [Maria Ilaria Lunesu](https://web.unica.it/unica/page/it/mariai_lunesu)
 
 <div class="cols">
 
-- Giacomo Medda
-- Ricercatore Post-Dottorato
+- Giulio Casti
+- Dottorando in Matematica e Informatica
 
 <img src="./img/Dragonsito-spyro.png" width="300px"/></img>
 
@@ -23,9 +23,8 @@ Prof. [Maria Ilaria Lunesu](https://web.unica.it/unica/page/it/mariai_lunesu)
 
 <div class="cols">
 
-- [giacomo.medda@unica.it](mailto:giacomo.medda@unica.it)
-- Microsoft Teams (Giacomo Medda)
-- [![Repo](https://badgen.net/badge/icon/jackmedda?icon=github&label&scale=3)](https://github.com/jackmedda)
+- [giulio.casti@unica.it](mailto:giulio.casti@unica.it)
+- Microsoft Teams (Giulio Casti)
 
 </div>
 
@@ -33,7 +32,7 @@ Prof. [Maria Ilaria Lunesu](https://web.unica.it/unica/page/it/mariai_lunesu)
 
 ## Materiale
 
-Tutto il materiale, lezione per lezione, sarà disponibile su [Github](https://github.com/ISW-IADA/Tutoraggio-ISW-IADA-2024-2025).
+Tutto il materiale, lezione per lezione, sarà disponibile su [Github](https://github.com/ISW-IADA/Tutoraggio-ISW-IADA-2025-2026).
 
 <div>
 
@@ -45,7 +44,7 @@ Le slide saranno consultabili sotto forma di slideshow.
 
 <!-- .element: class="fragment" -->
 
-Se avete suggerimenti o correzioni da fare, aprite una [issue](https://github.com/ISW-IADA/Tutoraggio-ISW-IADA-2024-2025/issues).
+Se avete suggerimenti o correzioni da fare, aprite una [issue](https://github.com/ISW-IADA/Tutoraggio-ISW-IADA-2025-2026/issues).
 
 <!-- .element: class="fragment" -->
 
