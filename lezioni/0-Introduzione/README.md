@@ -13,8 +13,6 @@ Prof. [Maria Ilaria Lunesu](https://web.unica.it/unica/page/it/mariai_lunesu)
 - Giulio Casti
 - Dottorando in Matematica e Informatica
 
-<img src="./img/Dragonsito-spyro.png" width="300px"/></img>
-
 </div>
 
 <!-- New subsection -->
@@ -34,11 +32,6 @@ Prof. [Maria Ilaria Lunesu](https://web.unica.it/unica/page/it/mariai_lunesu)
 
 Tutto il materiale, lezione per lezione, sarà disponibile su [Github](https://github.com/ISW-IADA/Tutoraggio-ISW-IADA-2025-2026).
 
-<div>
-
-<img src="./img/qr_git_repo.png" width="300px"/></img>
-
-</div>
 
 Le slide saranno consultabili sotto forma di slideshow.
 
