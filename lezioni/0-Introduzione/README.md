@@ -1,6 +1,6 @@
 # Introduzione
 
-Tutoraggio del corso di [Ingegneria del Software (IADA)](https://unica.coursecatalogue.cineca.it/insegnamenti/2025/21412/2021/9999/11022) 2024/2025
+Tutoraggio del corso di [Ingegneria del Software (IADA)](https://unica.coursecatalogue.cineca.it/insegnamenti/2025/21412/2021/9999/11022) 2025/2026
 
 Prof. [Maria Ilaria Lunesu](https://web.unica.it/unica/page/it/mariai_lunesu)
 
