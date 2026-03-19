@@ -19,13 +19,13 @@ Tutoraggio del corso di [Ingegneria del Software](https://unica.coursecatalogue.
 |---------|--------|
 | [0](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/0-Introduzione/) | Introduzione  |
 | [1](https://github.com/giuliocasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/1-OOP/oop.ipynb)  | Object Oriented Programming (OOP) |
-| [2](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/2-Git/) | Git e GitHub |
+<!-- | [2](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/2-Git/) | Git e GitHub |
 | [3](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/3-BestPractices/) | Best Practices |
 | [4.1](https://github.com/giuliocasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/data_analytics.ipynb) | Ottimizzazione Esecuzione (Data Analytics) |
 | [4.2](https://github.com/giuliocasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/optimization.ipynb) | Ottimizzazione Esecuzione (Computing Optimization) |
 | [4.3](https://github.com/giuliocasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/parallelism.ipynb) | Ottimizzazione Esecuzione (Parallelism) |
 | [4.4](https://github.com/giuliocasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/hyperparameter_optimization.ipynb) | Ottimizzazione Esecuzione (Hyperparameter Optimization) |
-| [5](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/5-TestingPublishing/) | Testing, CI e Pubblicazione |
+| [5](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/5-TestingPublishing/) | Testing, CI e Pubblicazione | -->
 
 </div>
 
@@ -36,10 +36,10 @@ Tutoraggio del corso di [Ingegneria del Software](https://unica.coursecatalogue.
 | Notebook    | Binder  | Google Colab |
 |--------------------------------|-------------------------------------------|-------------------------|
 | 1-Object Oriented Programming  | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/HEAD?filepath=lezioni%2F1-OOP%2Foop.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/1-OOP/oop.ipynb)
-| 4-Data Analytics  | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/HEAD?filepath=lezioni%2F4-Optimization%2Fdata_analytics.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/data_analytics.ipynb) |
+<!-- | 4-Data Analytics  | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/HEAD?filepath=lezioni%2F4-Optimization%2Fdata_analytics.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/data_analytics.ipynb) |
 | 4-Optimization  | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/HEAD?filepath=lezioni%2F4-Optimization%2Foptimization.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/optimization.ipynb) |
 | 4-Parallelism  | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/HEAD?filepath=lezioni%2F4-Optimization%2Fparallelism.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/parallelism.ipynb) |
-| 4-Hyperparameter Optimization  | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/HEAD?filepath=lezioni%2F4-Optimization%2Fhyperparameter_optimization.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/hyperparameter_optimization.ipynb) |
+| 4-Hyperparameter Optimization  | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/HEAD?filepath=lezioni%2F4-Optimization%2Fhyperparameter_optimization.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/hyperparameter_optimization.ipynb) | -->
 
 
 <!-- New section -->

@@ -30,14 +30,14 @@ Prof. [Maria Ilaria Lunesu](https://web.unica.it/unica/page/it/mariai_lunesu)
 
 ## Materiale
 
-Tutto il materiale, lezione per lezione, sarà disponibile su [Github](https://github.com/ISW-IADA/Tutoraggio-ISW-IADA-2025-2026).
+Tutto il materiale, lezione per lezione, sarà disponibile su [Github](https://github.com/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026).
 
 
 Le slide saranno consultabili sotto forma di slideshow.
 
 <!-- .element: class="fragment" -->
 
-Se avete suggerimenti o correzioni da fare, aprite una [issue](https://github.com/ISW-IADA/Tutoraggio-ISW-IADA-2025-2026/issues).
+Se avete suggerimenti o correzioni da fare, aprite una [issue](https://github.com/GiulioCasti/Tutoraggio-ISW-IADA-2025-2026/issues).
 
 <!-- .element: class="fragment" -->
 
@@ -74,11 +74,11 @@ Se avete suggerimenti o correzioni da fare, aprite una [issue](https://github.co
 
 | Data Lezione | Argomento |
 |----------------|------------|
-| 18 Marzo | Programmazione a oggetti |
-| 8 Aprile | Source Control (Git e GitHub) |
-| 29 Aprile | Gestione progetti, configurazione, qualità del codice, monitoraggio |
-| 13 Maggio | Esecuzione ottimizzata |
-| 27 Maggio | Testing e Continuous Integration (CI), ??Packaging & Publishing?? |
+| 24 Marzo | Programmazione a oggetti |
+| 8 Aprile | Esercitazione UML |
+| 28 Aprile | Source Control (Git e GitHub) |
+| 12 Maggio | Gestione progetti, configurazione, qualità del codice, ottimizzazione, monitoraggio |
+| 26 Maggio | Testing e Continuous Integration (CI), ??Packaging & Publishing?? |
 
 <!-- New section -->
 
