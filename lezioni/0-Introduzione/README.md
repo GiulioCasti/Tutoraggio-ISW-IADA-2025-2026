@@ -78,7 +78,7 @@ Se avete suggerimenti o correzioni da fare, aprite una [issue](https://github.co
 | 8 Aprile | Esercitazione UML |
 | 28 Aprile | Source Control (Git e GitHub) |
 | 12 Maggio | Gestione progetti, configurazione, qualità del codice, ottimizzazione, monitoraggio |
-| 26 Maggio | Testing e Continuous Integration (CI), ??Packaging & Publishing?? |
+| 26 Maggio | Testing e Continuous Integration (CI), Packaging & Publishing |
 
 <!-- New section -->
 
