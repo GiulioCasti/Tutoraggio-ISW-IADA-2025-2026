@@ -48,10 +48,10 @@ Se avete suggerimenti o correzioni da fare, aprite una [issue](https://github.co
 <div class="cols">
 
 1. Programmazione a oggetti
-2. Source Control (Git e GitHub)
-3. Gestione progetti, configurazione, qualità del codice, monitoraggio
-4. Esecuzione ottimizzata
-5. Testing e Continuous Integration (CI), ??Packaging & Publishing??
+2. Esercitazione UML
+3. Source Control (Git e GitHub)
+4. Gestione progetti, configurazione, qualità del codice,ottimizzazione, monitoraggio
+5. Testing e Continuous Integration (CI), Packaging & Publishing
 
 <br/>
 
