@@ -255,17 +255,17 @@ Si supponga di dover sviluppare un sistema software per la gestione di una bibli
 5. L'utente seleziona "Prenota"
 6. Il sistema registra la prenotazione associandola all'utente e mostra una conferma con la data entro cui ritirare il libro
 
+**Postcondizioni** : la prenotazione è registrata nel sistema; la copia è riservata all'utente fino alla data di scadenza
+
 <!-- New subsection -->
 
 **Sequenza alternativa**:
 
 - 4.A Il libro risulta non disponibile (tutte le copie sono in prestito)
-  - 4.1.A Il sistema informa l'utente dell'indisponibilità e propone di essere avvisato quando una copia sarà disponibile
-  - 4.2.A L'utente conferma o annulla la notifica
+  - 4.1.A Il sistema informa l'utente dell'indisponibilità
+  - 4.2.A Il sistema annulla la prenotazione
 
-<!-- New subsection -->
-
-**Postcondizioni** : la prenotazione è registrata nel sistema; la copia è riservata all'utente fino alla data di scadenza
+**Postcondizioni** : nessuna
 
 <!-- New section -->
 
