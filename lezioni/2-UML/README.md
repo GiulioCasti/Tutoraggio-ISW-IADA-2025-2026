@@ -151,54 +151,132 @@ Notazione: relazione di dipendenza (freccia tratteggiata) con stereotipo `<<exte
 
 Si supponga di dover sviluppare un'applicazione web per la gestione della bacheca scolastica.
 
-- Al sistema accedono due tipi di utenti tramite login. Le credenziali sono fornite dalla scuola, quindi gli utenti non hanno bisogno di registrarsi.
+- Al sistema accedono due tipi di utenti tramite _login_. Le credenziali sono fornite dalla scuola, quindi gli utenti non hanno bisogno di registrarsi.
 
 <!-- .element: class="fragment" -->
 
-- Un professore può pubblicare il materiale delle lezioni, i compiti assegnati e gli avvisi relativi agli esami. Può inoltre inviare messaggi agli studenti. 
+- Un **professore** può _pubblicare il materiale_ delle lezioni, i _compiti_ assegnati e gli _avvisi_ relativi agli esami. Può inoltre _inviare messaggi_ agli **studenti**. 
 
 <!-- .element: class="fragment" -->
 
-- Uno studente può visualizzare tutto il contenuto pubblicato sulla bacheca e inviare messaggi al professore.
+- Uno **studente** può _visualizzare_ tutto il contenuto pubblicato sulla bacheca e _inviare messaggi_ al **professore**.
 
 <!-- .element: class="fragment" -->
 
 <!-- New subsection -->
 
 - Disegnare il diagramma dei casi d'uso.
-- Documentare il caso d'uso "Pubblica compiti".
+- Documentare il caso d'uso "**Pubblica compiti**".
 
 <!-- New subsection -->
 
-<img src="img/Esercizio1.png" alt="drawing" height="700"/>
+<img src="img/Esercizio1.png" alt="drawing" height="600"/>
 
 
 <!-- New subsection -->
 
 ## CdU "Pubblica compiti"
 
-- **Descrizione**: Il professore pubblica sulla bacheca i compiti assegnati agli studenti, indicando la descrizione e la data di consegna.
+**Descrizione**
 
-- **Attori primari**: Professore
+Il professore pubblica sulla bacheca i compiti assegnati agli studenti, indicando la descrizione e la data di consegna.
+<!-- .element: class="fragment" -->
 
-- **Attori secondari**: nessuno
+**Attori primari**
 
-- **Precondizioni**: il professore deve aver effettuato il login.
+Professore
+<!-- .element: class="fragment" -->
+
+**Attori secondari**
+
+nessuno
+<!-- .element: class="fragment" -->
+
+**Precondizioni**
+
+il professore deve aver effettuato il login.
+<!-- .element: class="fragment" -->
 
 <!-- New subsection -->
 
 **Sequenza principale**:
 
 1. Il professore seleziona "Pubblica compiti" dalla bacheca.
+<!-- .element: class="fragment" -->
+
 2. Il sistema mostra il form di inserimento con i campi: descrizione del compito e data di consegna.
+<!-- .element: class="fragment" -->
+
 3. Il professore compila i campi e conferma la pubblicazione.
+<!-- .element: class="fragment" -->
+
 4. Il sistema valida i dati inseriti.
+<!-- .element: class="fragment" -->
+
 5. Il sistema pubblica il compito sulla bacheca e lo rende visibile a tutti gli studenti.
+<!-- .element: class="fragment" -->
+
 6. Il sistema mostra un messaggio di conferma al professore.
+<!-- .element: class="fragment" -->
 
 <!-- New subsection -->
 
 **Postcondizioni** : il compito è visibile sulla bacheca di tutti gli studenti del corso.
+
+
+<!-- New subsection -->
+
+**Sequenza alternativa**:
+
+- 3.A Annullamento dell'operazione:
+
+  - 3.A.1 Il professore chiude il form o seleziona "Annulla" prima di confermare.
+  <!-- .element: class="fragment" -->
+
+  - 3.A.2 Il sistema scarta i dati inseriti senza effettuare alcuna pubblicazione. 
+  <!-- .element: class="fragment" -->
+
+**Postcondizioni**: il compito non viene pubblicato nella bacheca.
+<!-- .element: class="fragment" -->
+
+
+<!-- New subsection -->
+
+**Sequenza alternativa**:
+
+- 4.A Dati mancanti o non validi:
+
+  - 4.A.1 Il sistema rileva che uno o più campi obbligatori sono vuoti oppure che la data di consegna è nel passato.
+  <!-- .element: class="fragment" -->
+
+  - 4.A.2 Il sistema evidenzia i campi errati e mostra un messaggio di errore descrittivo.
+  <!-- .element: class="fragment" -->
+
+  - 4.A.3 Il professore corregge i dati e ripete dal passo 3.
+  <!-- .element: class="fragment" --> 
+
+**Postcondizioni** : il compito è visibile sulla bacheca di tutti gli studenti del corso.
+<!-- .element: class="fragment" -->
+
+
+<!-- New subsection -->
+
+**Sequenza alternativa**:
+
+- 5.A Errore interno durante la pubblicazione:
+
+  - 5.A.1 Il sistema non riesce a salvare il compito a causa di un errore (es. database non raggiungibile, timeout di rete).
+  <!-- .element: class="fragment" -->
+
+  - 5.A.2 Il sistema mostra un messaggio di errore e invita il professore a riprovare.
+  <!-- .element: class="fragment" -->
+
+  - 5.A.3 Il professore può riprovare dal passo 3 oppure annullare l'operazione.
+  <!-- .element: class="fragment" -->
+
+**Postcondizioni** : il compito non viene pubblicato nella bacheca.
+<!-- .element: class="fragment" -->
+
 
 <!-- New section -->
 
@@ -210,9 +288,11 @@ Si supponga di dover sviluppare un sistema software per la gestione di una bibli
 
 <!-- .element: class="fragment" -->
 
-- Una volta autenticato, l'utente può _cercare un libro_ e _prenotare un libro_ disponibile.
+- Una volta autenticato, l'**utente** può _cercare un libro_. Può anche _prenotare un libro_ disponibile e ricevere un riscontro tramite un sistema di posta elettronica esterno (**Mail Server**).
 
 <!-- .element: class="fragment" -->
+
+<!-- New subsection -->
 
 - Il **bibliotecario** gestisce il catalogo (aggiunta, modifica e rimozione di libri).
 
@@ -236,24 +316,57 @@ Si supponga di dover sviluppare un sistema software per la gestione di una bibli
 
 ## CdU "Prenota libro"
 
-- **Descrizione**: L'utente cerca un libro disponibile e lo prenota per il ritiro in biblioteca.
+**Descrizione**
 
-- **Attori primari**: Utente
+L'utente cerca un libro disponibile e lo prenota per il ritiro in biblioteca.
+<!-- .element: class="fragment" -->
 
-- **Attori secondari**: nessuno
+**Attori primari**
 
-- **Precondizioni**: l'utente deve aver effettuato il login; il libro cercato deve essere disponibile
+Utente
+<!-- .element: class="fragment" -->
+
+**Attori secondari**
+
+Mail Server
+<!-- .element: class="fragment" -->
+
+**Precondizioni**
+
+l'utente deve aver effettuato il login; il libro cercato deve essere disponibile
+<!-- .element: class="fragment" -->
 
 <!-- New subsection -->
 
 **Sequenza principale**:
 
 1. L'utente seleziona l'opzione "Cerca libro" e inserisce i criteri (titolo, autore o ISBN)
-2. Il sistema mostra i risultati corrispondenti
-3. L'utente seleziona il libro desiderato
+<!-- .element: class="fragment" -->
+
+2. Il sistema mostra la lista dei risultati corrispondenti, con titolo, autore, anno e disponibilità per ciascun libro.
+<!-- .element: class="fragment" -->
+
+3. L'utente seleziona il libro desiderato dalla lista.
+<!-- .element: class="fragment" -->
+
 4. Il sistema verifica la disponibilità e mostra i dettagli del libro
+<!-- .element: class="fragment" -->
+
 5. L'utente seleziona "Prenota"
-6. Il sistema registra la prenotazione associandola all'utente e mostra una conferma con la data entro cui ritirare il libro
+<!-- .element: class="fragment" -->
+
+6. Il sistema verifica che l'utente non abbia già una prenotazione attiva per lo stesso libro.
+<!-- .element: class="fragment" -->
+
+<!-- New subsection -->
+
+7. Il sistema registra la prenotazione, associandola all'account dell'utente e alla copia disponibile.
+<!-- .element: class="fragment" -->
+
+8. Il sistema manda una notifica via mail tramite il **Mail Server** indicando il codice di prenotazione e la data entro cui il libro deve essere ritirato.
+<!-- .element: class="fragment" -->
+
+<!-- New subsection -->
 
 **Postcondizioni** : la prenotazione è registrata nel sistema; la copia è riservata all'utente fino alla data di scadenza
 
@@ -261,11 +374,38 @@ Si supponga di dover sviluppare un sistema software per la gestione di una bibli
 
 **Sequenza alternativa**:
 
-- 4.A Il libro risulta non disponibile (tutte le copie sono in prestito)
-  - 4.1.A Il sistema informa l'utente dell'indisponibilità
-  - 4.2.A Il sistema annulla la prenotazione
+- 4.A Nessun risultato trovato:
 
-**Postcondizioni** : nessuna
+  - 4.A.1 Il sistema non trova libri corrispondenti ai criteri inseriti.
+  <!-- .element: class="fragment" -->
+
+  - 4.A.2 Il sistema mostra un messaggio di assenza di risultati e suggerisce di modificare i criteri di ricerca.
+  <!-- .element: class="fragment" -->
+
+  - 4.A.3 L'utente può inserire nuovi criteri e tornare al passo 1, oppure abbandonare la ricerca.
+  <!-- .element: class="fragment" -->
+
+**Postcondizioni** : nessuna prenotazione effettuata.
+<!-- .element: class="fragment" -->
+
+<!-- New subsection -->
+
+**Sequenza alternativa**:
+
+- 5.A Il libro risulta non disponibile (tutte le copie sono in prestito):
+
+  - 5.A.1 Il sistema informa l'utente che non vi sono copie disponibili.
+  <!-- .element: class="fragment" -->
+
+  - 5.A.2 Il sistema propone all'utente di inserirsi in una lista d'attesa.
+  <!-- .element: class="fragment" -->
+
+  - 5.A.3 L'utente accetta, il sistema registra l'iscrizione alla lista d'attesa e si impegna a notificarlo non appena una copia si libera. Il caso d'uso termina.
+  <!-- .element: class="fragment" -->
+
+<!-- New subsection -->
+
+**Postcondizioni** : nessuna prenotazione effettuata, l'utente è registrato in lista d'attesa.
 
 <!-- New section -->
 
@@ -273,15 +413,15 @@ Si supponga di dover sviluppare un sistema software per la gestione di una bibli
 
 Si vuole realizzare un sistema software per il tracciamento di un caddozzone itinerante. 
 
-- L' utente può consultare il menù del food truck, visualizzare la sua posizione attuale sulla mappa, effettuare un ordine e pagarlo online. Il pagamento online può essere effettuato anche tramite PayPal.
+- L' **utente** può _consultare il menù_ del food truck, _visualizzare la sua posizione_ attuale sulla mappa, _effettuare un ordine_ e _pagarlo online_. Il pagamento online può essere effettuato anche tramite PayPal.
 
 <!-- .element: class="fragment" -->
 
-- Un rilevatore GPS aggiorna automaticamente la posizione del camion ogni minuto.
+- Un **rilevatore GPS** _aggiorna automaticamente la posizione_ del camion ogni minuto.
 
 <!-- .element: class="fragment" -->
 
-- Un amministratore, tramite un pannello di controllo dedicato, è in grado di: aggiornare il menù; gestire gli ordini; verificare che la posizione mostrata agli utenti sia corretta e modificarla manualmente in caso di malfunzionamento del GPS.
+- Un **amministratore**, tramite un pannello di controllo dedicato, è in grado di: _aggiornare il menù_; _gestire gli ordini_; _verificare che la posizione_ mostrata agli utenti sia corretta e _modificarla manualmente_ in caso di malfunzionamento del GPS.
 
 <!-- .element: class="fragment" -->
 
@@ -298,39 +438,98 @@ Si vuole realizzare un sistema software per il tracciamento di un caddozzone iti
 
 ## CdU "Ordina e paga"
 
-- **Descrizione**: L'utente consulta il menù, effettua un ordine, paga online e segue la posizione del camion per sapere dove ritirare il proprio ordine.
+**Descrizione**
 
-- **Attori primari**: Utente
+L'utente consulta il menù, effettua un ordine, paga online e segue la posizione del camion per sapere dove ritirare il proprio ordine.
+<!-- .element: class="fragment" -->
 
-- **Attori secondari**: PayPal (solo nella sequenza alternativa)
+**Attori primari**
 
-- **Precondizioni**: il caddozzone deve trovarsi nella posizione indicata
+Utente
+<!-- .element: class="fragment" -->
+
+**Attori secondari**
+
+PayPal (solo nella sequenza alternativa)
+<!-- .element: class="fragment" -->
+
+**Precondizioni**
+
+il food truck deve trovarsi nella posizione indicata
+<!-- .element: class="fragment" -->
 
 <!-- New subsection -->
 
 **Sequenza principale**:
 
 1. L'utente seleziona "Consulta menù" e visualizza i prodotti disponibili
+<!-- .element: class="fragment" -->
+
 2. L'utente seleziona i prodotti desiderati e conferma l'ordine
+<!-- .element: class="fragment" -->
+
 3. Il sistema mostra il riepilogo dell'ordine e il totale da pagare
+<!-- .element: class="fragment" -->
+
 4. L'utente seleziona "Pagamento online" e inserisce i dati della carta di credito
+<!-- .element: class="fragment" -->
+
 5. Il sistema verifica i dati e addebita l'importo
+<!-- .element: class="fragment" -->
+
+<!-- New subsection -->
+
 6. Il sistema conferma l'avvenuto pagamento e registra l'ordine
+<!-- .element: class="fragment" -->
+
 7. L'utente seleziona "Visualizza posizione" e visualizza sulla mappa la posizione attuale del camion per poter ritirare l'ordine
+<!-- .element: class="fragment" -->
 
 <!-- New subsection -->
-
-
-**Sequenza alternativa**:
-- 4.A L'utente seleziona "Pagamento con PayPal" invece del pagamento con carta
-  - 4.1.A Il sistema reindirizza l'utente alla piattaforma PayPal
-  - 4.2.A L'utente si autentica su PayPal e autorizza il pagamento
-  - 4.3.A PayPal comunica al sistema l'avvenuto pagamento
-
-<!-- New subsection -->
-
 
 **Postcondizioni**: l'ordine è registrato nel sistema e il pagamento è stato completato; 
+
+<!-- New subsection -->
+
+**Sequenza alternativa**:
+
+- 4.A L'utente seleziona "Pagamento con PayPal" invece del pagamento con carta di credito:
+
+  - 4.A.1 Il sistema reindirizza l'utente alla piattaforma PayPal, passando l'importo totale dell'ordine.
+  <!-- .element: class="fragment" -->
+
+  - 4.A.2 L'utente si autentica su PayPal e visualizza il riepilogo del pagamento.
+  <!-- .element: class="fragment" -->
+
+  - 4.A.3 L'utente autorizza il pagamento su PayPal.
+  <!-- .element: class="fragment" -->
+
+  - 4.A.4 PayPal elabora la transazione e comunica al sistema l'esito.
+  <!-- .element: class="fragment" -->
+
+<!-- New subsection -->
+
+**Postcondizioni**: l'ordine è registrato nel sistema e il pagamento è stato completato; 
+
+<!-- New subsection -->
+
+**Sequenza alternativa**:
+
+- 5.A Carta di credito rifiutata:
+
+  - 5.A.1 Il sistema riceve un esito negativo dalla verifica della carta (dati errati, carta scaduta o fondi insufficienti).
+  <!-- .element: class="fragment" -->
+
+  - 5.A.2 Il sistema informa l'utente del motivo del rifiuto e propone di riprovare con una carta diversa o di passare al pagamento PayPal.
+  <!-- .element: class="fragment" -->
+
+  - 5.A.3 Se l'utente non completa il pagamento entro un tempo limite, il sistema annulla l'ordine.
+  <!-- .element: class="fragment" -->
+
+
+<!-- New subsection -->
+
+**Postcondizioni**: nessun ordine registrato; nessun addebito effettuato.
 
 
 

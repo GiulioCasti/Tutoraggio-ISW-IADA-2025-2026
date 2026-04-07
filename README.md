@@ -19,6 +19,7 @@ Tutoraggio del corso di [Ingegneria del Software](https://unica.coursecatalogue.
 |---------|--------|
 | [0](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/0-Introduzione/) | Introduzione  |
 | [1](https://github.com/giuliocasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/1-OOP/oop.ipynb)  | Object Oriented Programming (OOP) |
+| [2](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/2-UML/) | Esercitazione UML |
 <!-- | [2](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/2-Git/) | Git e GitHub |
 | [3](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/3-BestPractices/) | Best Practices |
 | [4.1](https://github.com/giuliocasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/data_analytics.ipynb) | Ottimizzazione Esecuzione (Data Analytics) |
