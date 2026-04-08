@@ -7,7 +7,7 @@
 I **casi d'uso** (_use case_) rappresentano uno strumento di supporto nella
 fase di identificazione dei **requisiti funzionali** di un sistema
 
-- Si basano sulla descrizione delle interazioni tipiche tra il sistema stesso, e utenti o sistemi esterni (**attori**)
+- Si basano sulla descrizione delle interazioni tipiche tra il sistema stesso, utenti o sistemi esterni (**attori**)
 
 - Un caso d’uso rappresenta il **valore** che deve essere dato all’utente
 
@@ -21,7 +21,7 @@ Un **caso d'uso** ha
 
 - _descrizione_ (spesso informale) della sequenza di eventi che avvengono tra gli oggetti durante l'elaborazione (anche degli attori esterni al sistema).
 
-Possono contenere diagrammi esplicativi, ed altre informazioni che iutano l’interazione con il cliente
+Possono contenere diagrammi esplicativi, ed altre informazioni che aiutano l’interazione con il cliente
 
 Includono uno o più **scenari**
 
