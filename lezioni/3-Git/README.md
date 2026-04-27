@@ -545,6 +545,48 @@ Le issue sono spesso scritte per evidenziare funzionalità mancanti e problemi d
 
 <!-- New subsection -->
 
+Una **Pull Request (PR)** è una richiesta di unire le modifiche fatte su un branch in un altro branch (tipicamente il principale).
+
+In altre parole: "ho lavorato su un mio branch, posso aggiungere queste modifiche a _main_?"
+
+<!-- .element: class="fragment" -->
+
+<!-- New subsection -->
+
+Perché non fare direttamente un `git merge`?
+
+- Permette ad altri collaboratori di **revisionare** il codice prima dell'integrazione
+- Crea uno **spazio di discussione** sulle modifiche proposte
+- Si può **automatizzare** il controllo (es. test, formato del codice)
+- Lascia una **traccia storica** del perché una modifica è stata fatta
+
+<!-- .element: class="fragment" -->
+
+<!-- New subsection -->
+
+Il flusso tipico di una PR:
+
+1. Creo un branch e ci lavoro sopra (`git switch -c nuova-feature`)
+2. Faccio commit e push del branch su GitHub (`git push origin nuova-feature`)
+3. Apro una PR su GitHub: da _nuova-feature_ verso _main_
+4. I collaboratori revisionano e commentano
+5. Eventualmente faccio altri commit per rispondere ai feedback
+6. Quando la PR è approvata, si esegue il merge
+7. Il branch _nuova-feature_ può essere cancellato
+
+<!-- New subsection -->
+
+Quando si apre una PR, vanno specificati due branch:
+
+- **base**: il branch di destinazione (dove vogliamo portare le modifiche, es. _main_)
+- **compare**: il branch di origine (da dove provengono le modifiche, es. _nuova-feature_)
+
+GitHub mostrerà automaticamente le differenze fra i due branch.
+
+<!-- .element: class="fragment" -->
+
+<!-- New subsection -->
+
 Creare i branch è utile per risolvere bug o lavorare su nuove funzionalità, testare il nuovo codice in maniera isolata da quello principale e infine integrarlo.
 
 Ciò richiede che alcuni criteri vadano prima presi in considerazione.
@@ -559,29 +601,17 @@ Ciò richiede che alcuni criteri vadano prima presi in considerazione.
 
 <!-- New subsection -->
 
-Oltre a questi aspetti importanti, è anche utile che il codice venga visionato da altri sviluppatori (se si lavora in team) per ottenere feedback da entità esterne allo sviluppo del codice considerato.
-
-Questo pattern di sviluppo è fornito dalle **Pull Requests (PR)**.
-
-<!-- New subsection -->
-
 Come descritto prima, GitHub è un ottimo strumento per collaborare su un progetto, ma ci sono modelli distinti per farlo, in cui le PRs sono usate in maniere differente.
 
-Il _fork and pull_ model prevede il _fork_ di un repository esistente, ovvero la creazione di una copia del repository nel proprio profilo, in grado ancora di comunicare col repository originale o discostarsi completamente.
+Il _fork and pull_ model prevede il _fork_ di un repository esistente, ovvero la creazione di una copia del repository nel proprio profilo, in grado ancora di comunicare col repository originale o discostarsi completamente (esempio precedente).
 
 <!-- .element: class="fragment" -->
 
-Lo _shared repository_ model prevede che tutti i collaboratori abbiano i permessi di push su un singolo repository condiviso e i _topic branch_ vengano creati per fare dei cambiamenti.
-
-<!-- .element: class="fragment" -->
-
-Le PRs create dai due modelli sono simili, ma ci concentreremo sullo _shared repository_.
-
-<!-- .element: class="fragment" -->
+Lo _shared repository_ model prevede che tutti i collaboratori abbiano i permessi di push su un singolo repository condiviso e i _topic branch_ vengano creati per fare dei cambiamenti (ad esempio un progetto universitario).
 
 <!-- New subsection -->
 
-Le PRs sono delle proposte di merge per integrare un insieme di cambiamenti da un branch a un altro. Esse permettono ai collaboratori di revisionare le modifiche e iniziare delle discussioni prima che queste modifiche vengano integrate nella codebase principale.
+Le PRs create dai due modelli sono simili, ma ci concentreremo sullo _shared repository_.
 
 Le PRs lavorano spesso in maniera complementare con le issue, in cui una PR può menzionare diverse issue che vengono risolte dalle modifiche proposte.
 
