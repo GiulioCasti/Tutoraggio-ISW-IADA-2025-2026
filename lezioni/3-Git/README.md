@@ -7,7 +7,7 @@
 1. Introduzione a Git
 - Cos'è Git? Concetti base e architettura
 - Flusso di lavoro con Git: Creazione di un repository
-- Monitorazione working tree
+- Monitoraggio working tree
 - Versioni ramificate (branch) e riunificate (merge)
 - Repository remoto
 - Vincoli di versioning (.gitignore)
@@ -120,21 +120,19 @@ Il comando _commit_ (impegno) è un comando fondamentale in Git e serve per aggi
 
 Vari `git add` e `git commit` generano una catena di versioni, in cui tipicamente l'ultima aggiunta è la versione attuale dei propri file. Essa è la testa del nostro ramo di versioni.
 
-<!-- .element: class="fragment"  -->
-
 Questo aspetto è importante perché Git associa una referenza simbolica, chiamata **HEAD**, che punta alla tua posizione nello storico dei commit.<br>
 A ogni commit (creazione di versione), **HEAD** si sposta, tipicamente tenendo traccia della "testa" del ramo di versioni.
 
 <!-- New section -->
 
-## Monitorazione working tree
+## Monitoraggio working tree
 
 È spesso necessario controllare e verificare che i nostri comandi Git siano applicati ai file giusti e controllare che sia tutto in ordine.<br>
 Esistono alcuni comandi utili per monitorare il ciclo di vita del software e gestire il repository.
 
 <!-- New subsection -->
 
-`git status`: elenca dall'alto verso il basso i) i file che presentano differenze tra l'indice (area di staging) e l'HEAD attuale, ii) i file che presentando differenze tra l'indice (area di staging) e il workspace (working tree), iii) i file del workspace che non sono tracciati da Git.
+`git status`: elenca dall'alto verso il basso 1) i file che presentano differenze tra l'indice (area di staging) e l'HEAD attuale, 2) i file che presentando differenze tra l'indice (area di staging) e il workspace (working tree), 3) i file del workspace che non sono tracciati da Git.
 
 ![](img/git_status.png)
 
@@ -222,11 +220,29 @@ Bisogna quindi risolvere questi conflitti. Seguendo le [linee guida](https://git
 
 Vediamo il metodo più semplice, ovvero modificare il file.
 
+L'ordine degli eventi è importante per capire il workflow:
+
+1. Lanciamo `git merge <altro-branch>`
+2. Git tenta automaticamente di fondere i file dei due branch
+3. Per i file in conflitto, Git **scrive direttamente nel file** dei marcatori speciali (`<<<<<<<`, `=======`, `>>>>>>>`) per segnalare le parti in conflitto
+4. Il merge si **interrompe**: il commit di merge non viene creato finché i conflitti non sono risolti
+5. Sta a noi aprire i file, scegliere cosa tenere e rimuovere i marcatori
+
+<!-- New subsection -->
+
+NOTA: i marcatori sono già **fisicamente nei file** subito dopo il `git merge`. Non serve nessun comando aggiuntivo per "vederli" — basta aprire il file.
+
+
 ![](img/git_merge_conflicts_file_placeholders.png)
 
 La version del branch _nuova\_feature_ sembra migliore. Cancelliamo tutto e teniamo solo il contenuto fra "======" e ">>>>>>>> nuova_feature".
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
+<!-- New subsection -->
+
+
+6. Con `git add <file>` segnaliamo a Git che il conflitto è risolto
+7. Con `git commit` finalizziamo il merge
+
 
 <!-- New subsection -->
 
@@ -283,7 +299,7 @@ Il primo comando importante da imparare con repository remoti è `git clone <url
 
 <!-- .element: class="fragment" -->
 
-Col nostro esempio, il comando completo sarebbe `git clone jackmedda@git.ourcompany.com:project.git`
+Col nostro esempio, il comando completo sarebbe `git clone utente@git.ourcompany.com:project.git`
 
 <!-- .element: class="fragment" -->
 
