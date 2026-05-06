@@ -4,20 +4,20 @@ In questa sezione approfondiremo le *best practices* da seguire nello sviluppo d
 
 <!-- New section -->
 
-## Sommario
+## Sommario 
 
-1. **Gestione delle dipendenze** (pip, poetry, conda, uv)
-2. **Strutturazione e creazione di package** (vantaggi, condivisione, cookiecutter)
-3. **Metodi di packaging** (setup.py, setup.cfg, pyproject.toml)
-4. **Code Quality** (PEP8, linters, ruff, pre-commit)
-5. **Tipizzazione** (mypy, typing, gestione exception)
-6. **Logging e monitoraggio** (logging, tqdm, wandb)  
-7. **Configurazione e gestione parametri** (argparse, file config, Hydra)
-8. **Strumenti di profilazione** (pyinstrument, memory-profiler, scalene)
+1. **Gestione delle dipendenze** (pip, uv)
+2. **Strutturazione e creazione di package** (vantaggi, struttura, condivisione, pyproject.toml)
+3. **Code Quality** (PEP8, linters, ruff, pre-commit)
+4. **Tipizzazione** (sintassi, typing, mypy)
+5. **Logging, monitoraggio e configurazione** (logging, tqdm, yaml)  
+
 
 <!-- New section -->
 
 ## 1. Gestione delle dipendenze
+
+<!-- New subsection -->
 
 In Python, per gestire le dipendenze del progetto, si lavora solitamente in ambienti virtuali isolati, così da evitare conflitti e ingombro nel sistema globale.
 
@@ -162,13 +162,12 @@ Le sue *feature* più importanti includono:
 
 <!-- New subsection -->
 
-### Strutturare e Creare Package in Python
+### Perché creare un package
 
-In Python, organizzare il codice sotto forma di *package* offre innumerevoli vantaggi rispetto a una singola raccolta di script:
-- **Manutenibilità**: suddivisione funzionale del codice in moduli e sottopacchetti facilmente gestibili.  
-- **Riutilizzo**: funzioni e classi ben incapsulate risultano riutilizzabili in progetti diversi, evitando duplicazioni.  
-- **Condivisione**: pubblicazione dei *package* su indici (es. [PyPi](https://pypi.org/)) per condividerli con altri sviluppatori.  
-- **Facilità di installazione**: tramite `pip install <nome_pacchetto>` o altri tool (uv/poetry), chiunque può usare il tuo pacchetto.
+Organizzare il codice come *package* invece che come raccolta di script offre vantaggi sostanziali:
+- **Manutenibilità**: il codice è suddiviso in moduli con responsabilità chiare.
+- **Riutilizzo**: classi e funzioni ben incapsulate possono essere riusate in più progetti.
+- **Condivisione**: si può pubblicare il package su [PyPi](https://pypi.org/) e installarlo con `pip install <nome>`.
 
 <!-- New subsection -->
 
@@ -210,88 +209,32 @@ Un layout tipico potrebbe essere:
 
 <!-- New subsection -->
 
-**Come creare un package**
-
 Python interpreta un package se al suo interno è presente il file `__init__.py`, che può anche essere spesso vuoto.
 
 Quando eseguiamo del codice all'interno di un package, gli script prendono il nome di modulo e bisogna specificare a Python che il file da eseguire fa parte di un package nel modo seguente:
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ```bash
 python -m mio_package.sottocartella_package.script_modulo
 ```
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
+In questo modo Python risolve correttamente gli import relativi all'interno del package.
+
+> Per non partire da zero esistono tool come [Cookiecutter](https://github.com/cookiecutter/cookiecutter) che generano lo scheletro del progetto da template predefiniti.
 
 <!-- New subsection -->
 
-### Cookiecutter
+### Metodi di packaging
 
-Per velocizzare la creazione di progetti e adottare strutture standard, si può usufruire di [Cookiecutter](https://github.com/cookiecutter/cookiecutter).
-
-Si tratta di un tool che genera automaticamente i file e le cartelle tipiche dei progetti Python (e non solo) in base a template preconfigurati:
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-```bash
-pip install cookiecutter  # qui usiamo pip, ma i creatori consigliano di usare pipx.
-cookiecutter https://github.com/audreyfeldroy/cookiecutter-pypackage
-```
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
+Quando si sviluppa un pacchetto Python destinato a essere condiviso o installato, è fondamentale definire correttamente i metadati e le dipendenze. Si può impostare il packaging del progetto con **pyproject.toml**
 
 <!-- New subsection -->
 
-Esistono molti template, ognuno con particolarità diverse o specifici per alcuni obiettivi e linguaggi. Cookiecutter facilita la creazione dello scheletro del progetto, completo di setup, test e documentazione.
+### pyproject.toml
 
-Il template di esempio nel comando precedente è un template per progetti python che include molti tool, compreso Travis-CI, tox, ma non necessariamente è utile per tutti e potrebbe essere necessario adattarlo al proprio scopo.
+Lo standard moderno per definire metadati e dipendenze di un progetto Python è il file **pyproject.toml** ([PEP 518](https://peps.python.org/pep-0518/)). Sostituisce i vecchi `setup.py` e `setup.cfg`, che oggi sono considerati legacy. Esempio:
 
-<!-- .element: class="fragment" -->
 
-<!-- New section -->
-
-## 3. **Metodi di packaging**
-
-<!-- New subsection -->
-
-Quando si sviluppa un pacchetto Python destinato a essere condiviso o installato, è fondamentale definire correttamente i metadati e le dipendenze. Si può impostare il packaging del progetto con:
-
-1. **setup.py** (senza o con **setup.cfg**)  
-2. **pyproject.toml** (metodo più moderno e consigliato)
-
-<!-- New subsection -->
-
-#### setup.py
-
-Tradizionalmente, la configurazione di un progetto Python avveniva tramite questo file. Un semplice esempio:
-
-```python
-from setuptools import setup, find_packages
-
-setup(
-    name="mio_pacchetto",
-    version="0.1.0",
-    packages=find_packages(),
-    install_requires=[
-        "requests",
-        "numpy",
-    ],
-)
-```
-Dopodiché, per installare il progetto in locale si poteva eseguire `pip install .` o `python setup.py install`.
-
-<!-- New subsection -->
-
-#### pyproject.toml
-
-Oggi lo standard più raccomandato è usare **pyproject.toml**, introdotto dalla [PEP 518](https://peps.python.org/pep-0518/). È un file TOML che racchiude le informazioni di build, i metadati e le dipendenze del progetto, consentendo ad altri tool (come uv) di gestire la build in modo unificato.
-
-<!-- New subsection -->
-
-Il seguente è un esempio di pyproject.toml:
-
-```ini
+```toml
 [project]
 name = "mio_pacchetto"
 version = "0.1.0"
@@ -304,735 +247,388 @@ dependencies = [
   "numpy"
 ]
 
-[project.optional-dependencies]
-extra1 = ["numpy==2.1.2"]
-extra2 = ["numpy==2.0.0"]
-
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
-
-[tool.uv]
-conflicts = [
-    [{ extra = "extra1" }, { extra = "extra2" }]
-]
 ```
 
 <!-- New subsection -->
 
-L'esecuzione di `uv sync` esegue in automatico la lettura del contenuto di pyproject.toml per installare le dipendenze. Questo processo genera un **lockfile**.
+### Lockfile e riproducibilità
 
-Un **lockfile** cattura esattamente le versioni dei pacchetti installati nel progetto, garantendo una riproducibilità precisa dell’ambiente.
+Quando si esegue `uv sync`, uv legge `pyproject.toml`, installa le dipendenze e genera un **lockfile** che fissa le versioni esatte di tutti i pacchetti (incluse le sotto-dipendenze).
 
-<!-- .element: class="fragment" -->
+Rispetto al classico `requirements.txt`, il lockfile garantisce che tutti i collaboratori (e i server di produzione) usino esattamente le stesse versioni, evitando il classico *"funziona sulla mia macchina"*.
 
-Rispetto al classico requirements.txt, un lockfile conserva i vincoli esatti (inclusi eventuali sotto-dipendenze), evitando sorprese se un pacchetto rilascia una nuova versione che potrebbe non essere compatibile.
-
-<!-- .element: class="fragment" -->
 
 <!-- New subsection -->
 
-Un lockfile, così come i requirements.txt, non è sufficiente per la distribuzione e condivisione del codice. Per questo motivo esistono i processi di **build** e **publish** del codice.
+### Build e publish con uv
 
-Una volta configurato il nostro progetto in pyproject.toml, possiamo creare un distributable in formato wheel.
-
-<!-- .element: class="fragment" -->
-
-<!-- New subsection -->
-
-**Metodo tradizionale** (con twine):
-```bash
-python -m build  # crea la cartella dist/
-twine upload dist/*
-```
-
-**Metodo consigliato** con uv tramite comandi più immediati:
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
+Una volta configurato `pyproject.toml`, distribuire il package è immediato:
 
 ```bash
-uv build   # genera la wheel
-uv publish # pubblica direttamente su PyPi
+uv build     # genera la wheel nella cartella dist/
+uv publish   # pubblica direttamente su PyPi
 ```
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-Questi comandi si appoggiano ai metadati definiti in **pyproject.toml**, inclusa la versione e lo strumento di build.
-
-<!-- .element: class="fragment" data-fragment-index="2" -->
+Questi comandi sostituiscono il flusso tradizionale `python -m build` + `twine upload`, integrando tutto nei metadati di `pyproject.toml`.
 
 <!-- New section -->
 
-## 4. **Code Quality**
+## 3. **Code Quality**
 
 <!-- New subsection -->
 
-Garantire una *code quality* elevata significa adottare convenzioni di stile uniformi, automatizzare controlli alla ricerca di errori e prevenire bug. Una base imprescindibile è rispettare la [PEP8](https://peps.python.org/pep-0008/), documentazione che definisce lo stile raccomandato per il codice Python.
+Garantire una buona *code quality* significa adottare convenzioni di stile uniformi, automatizzare i controlli e prevenire bug ricorrenti. Il punto di partenza è la [PEP8](https://peps.python.org/pep-0008/), che definisce lo stile raccomandato per il codice Python.
 
 <!-- New subsection -->
 
-### Convenzioni di formattazione
+### PEP8 in breve
 
-[PEP8](https://peps.python.org/pep-0008) (Python Enhancement Proposal) rappresenta la guida stilistica di Python per
-eccellenza che viene aggiornata continuamente con nuove convenzioni o quando precedenti convenzioni diventano obsolete. 
+PEP8 (*Python Enhancement Proposal* n. 8) è la guida stilistica di riferimento. Le convenzioni principali:
 
-PEP8 racchiude linee guida su indentazione (4 spazi), lunghezza massima delle righe (79-88 caratteri), convenzioni di naming (CamelCase per le classi, minuscole_con_underscore per funzioni/variabili), gestione di import, spazi bianchi.
+- **Indentazione**: 4 spazi (mai tab)
+- **Lunghezza righe**: 79-88 caratteri
+- **Naming**: `CamelCase` per classi, `snake_case` per funzioni e variabili, `UPPER_CASE` per costanti
+- **Import**: uno per riga, raggruppati (stdlib, third-party, locali)
+- **Spazi bianchi**: regole precise attorno a operatori e dopo virgole
 
-<!-- .element: class="fragment" --> 
-
-[PEP257](https://peps.python.org/pep-0257/) si focalizza sulle docstrings.
-
-<!-- .element: class="fragment" --> 
-
-<!-- New subsection -->
-
-### Formatter: Black
-
-[Black](https://github.com/psf/black) è un formatter supportato dalla Python Software Foundation (PSF) che si occupa di allineare il codice alla PEP8 in modo automatico:
-```bash
-pip install black
-black <file_o_directory>
-```
-
-L’idea è che i programmatori non sprechino tempo nel discutere dettagli di stile, delegandone la responsabilità a uno strumento automatico.
-
-<!-- .element: class="fragment" --> 
+> [PEP257](https://peps.python.org/pep-0257/) si focalizza invece sulle docstring.
 
 <!-- New subsection -->
 
-### Linters
+### Linter e formatter
 
-*Lint* sono i filaccetti di tessuto che fuoriscono dai vestiti.
+Per non dover ricordare a memoria tutte le regole, esistono tool che automatizzano il controllo:
 
-I linter rilevano i difetti (i filaccetti) del codice per correggerli (o consigliarci di correggerli).
+- **Linter**: analizza il codice e segnala problemi, sia *stilistici* (formattazione) che *logici* (variabili non usate, import inutili, possibili bug).
+- **Formatter**: riscrive automaticamente il codice nello stile corretto.
 
-La maggior parte dei linters si possono suddivider in **logici** e **stilistici**. Quelli **logici** rilevano piccoli errori o risultati non previsti. Quelli **stilistici** rilevano il codice non formattato secondo convenzioni specifiche.
-
-<!-- .element: class="fragment" -->
-
-<!-- New subsection -->
-
-### Esempi di Linters
-
-- [Ruff](https://docs.astral.sh/ruff/) (logico e stilistico)
-- [Pylint](https://www.pylint.org/) (logico e stilistico)
-- [PyFlakes](https://github.com/PyCQA/pyflakes) (logico)
-- [pycodestyle](https://github.com/PyCQA/pycodestyle) (stilistico)
-- [Flake8](https://flake8.pycqa.org/) (unione di linter logici e stilistici)
-- [Pylama](https://github.com/klen/pylama) (unione di linter logici e stilistici)
-- ...
+Storicamente si usavano tool diversi per ogni compito (Flake8, Black, isort, pylint...). Oggi lo standard di fatto è **Ruff**, che li sostituisce tutti.
 
 <!-- New subsection -->
 
 ### Ruff
 
-**Ruff** è un linter e formatter di nuova generazione, scritto in Rust, che integra molte funzionalità di tool diversi (Flake8, isort, ecc.), diventando una soluzione _all-in-one_.
+[Ruff](https://docs.astral.sh/ruff/) è un linter e formatter scritto in Rust, estremamente veloce e configurabile via `pyproject.toml`. È sviluppato dagli stessi autori di uv.
 
-- Elevata **velocità** di esecuzione (anche su progetti molto ampi)
-- Configurazione personalizzata via `pyproject.toml` o `ruff.toml`
-- Controllo di import non utilizzati, formatting base, best practice sintattiche
+Comandi principali:
 
-<!-- .element: class="fragment" -->
+```bash
+ruff check                  # analizza i file della directory
+ruff check --fix            # corregge automaticamente quando possibile
+ruff format                 # formatta i file (sostituisce Black)
+```
 
-<!-- New subsection -->
+> Demo live: [Ruff Playground](https://play.ruff.rs/)
 
-Il [linter di Ruff](https://docs.astral.sh/ruff/linter/) può essere usato con i seguenti comandi:
-- ```ruff check```: lint i file nella directory attuale
-- ```ruff check --fix```: corregge gli errori correggibili
-- ```ruff check --watch```: lint i file a ogni modifica
-- ```ruff check <file_o_directory>```: lint il file o i file nella directory
-
-<!-- New subsection -->
-
-Il rapidissimo [formatter di Ruff](https://docs.astral.sh/ruff/formatter/) rappresenta un sostituto completo di Black che può essere usato con i seguenti comandi:
-- ```ruff format```: formatta i file nella directory attuale
-- ```ruff format <file_o_directory>```: formatta il file o i file nella directory
-
-<!-- New subsection -->
-
-> Dimostrazione di Ruff  
-> [Ruff Playground](https://play.ruff.rs/)
-
-<!-- New subsection -->
-
-### Altri strumenti di supporto alla code quality
-
-Esistono altri tool per il supporto allo sviluppo di software di qualità.
-
-- [mccabe](https://github.com/PyCQA/mccabe): controlla la complessità ciclomatica (McCabe, 1976) del software
-- [pre-commit](https://pre-commit.com/): tool per eseguire dei plug-in (es. linters) prima di un comando `git commit`
+Esistono altri linter (Pylint, Flake8, PyFlakes, pycodestyle), ma per progetti nuovi Ruff è la scelta consigliata.
 
 <!-- New subsection -->
 
 ### pre-commit
 
-[pre-commit](https://pre-commit.com/) è un framework che permette di eseguire controlli e formattazioni _prima_ del commit `git`. In pratica, si configura un file `.pre-commit-config.yaml` che elenca i vari “hook” (script o comandi) da lanciare automaticamente quando il developer esegue `git commit`.
-
-In questo modo:
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-- Non si dimentica mai di lanciare i controlli di stile e i linters
-- Eventuali errori di formattazione o difetti logici vengono segnalati prima di sottomettere il commit
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
+Anche con Ruff installato, ci si può dimenticare di eseguirlo prima di un `git commit`. Per evitarlo si usa [pre-commit](https://pre-commit.com/): un framework che esegue automaticamente dei controlli (chiamati *hook*) **prima** che il commit venga registrato da Git.
 
 <!-- New subsection -->
 
-Un esempio minimo di `.pre-commit-config.yaml` potrebbe essere:
+### Come funziona
+
+Il flusso è il seguente:
+
+1. **Installazione del tool** nell'ambiente:
+```bash
+pip install pre-commit
+```
+
+2. **Configurazione**: si crea un file `.pre-commit-config.yaml` nella root del repository, che elenca gli hook da eseguire (qui useremo Ruff):
+
+
 ```yaml
 repos:
-  - repo: https://github.com/psf/black
-    rev: 23.3.0
-    hooks:
-      - id: black
-        language_version: python3
-
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.268
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.0
     hooks:
       - id: ruff
         args: ["--fix"]
+      - id: ruff-format
 ```
+
 
 <!-- New subsection -->
 
-Dopo aver creato il file, si installa pre-commit nel repo locale:
+3. **Attivazione nel repository**: si esegue una sola volta per progetto.
 ```bash
-pip install pre-commit
 pre-commit install
 ```
 
-A questo punto, ogni volta che si effettua un `git commit`, i file modificati verranno controllati e formattati da Black e da Ruff se necessario. Se un hook fallisce, il commit viene automaticamente annullato, costringendo lo sviluppatore a correggere, ri-aggiungere i file e rifare il commit.
+Questo comando aggancia pre-commit al meccanismo di hook di Git (più precisamente, crea uno script in `.git/hooks/pre-commit`). Da questo momento in poi non serve più chiamare nessun comando manualmente.
 
-<!-- .element: class="fragment" -->
+4. **Uso quotidiano**: ogni volta che si esegue `git commit`, pre-commit si attiva da solo sui file modificati:
+   - se tutti gli hook passano → il commit avviene normalmente
+   - se un hook fallisce o modifica i file (es. Ruff li riformatta) → il commit viene **bloccato**. L'utente deve fare `git add` dei file corretti e ripetere `git commit`.
+
 
 <!-- New section -->
 
-## 5. **Tipizzazione**
+## 4. **Tipizzazione**
 
 <!-- New subsection -->
 
-La **tipizzazione** in Python permette di aggiungere annotazioni di tipo al codice, garantendo una migliore leggibilità e permettendo ai tool di analisi statica di individuare errori in fase di sviluppo, prima dell’esecuzione.
+Python è un linguaggio a tipizzazione **dinamica**: il tipo di una variabile è determinato a runtime in base al valore che contiene. Questo dà flessibilità ma rende facile introdurre bug che si manifestano solo durante l'esecuzione.
 
-Le annotazioni si specificano con la sintassi `variabile: Tipo` o `def funzione(arg: Tipo) -> Tipo Ritorno:`. Ad esempio:
 
+Le **type hint** (introdotte in [PEP 484](https://peps.python.org/pep-0484/)) permettono di annotare il codice con i tipi attesi, senza modificarne il comportamento. Sono un suggerimento per l'IDE, per i tool di analisi statica e soprattutto per chi legge il codice.
 <!-- .element: class="fragment" data-fragment-index="1" -->
 
+<!-- New subsection -->
+
+### Sintassi base
+
+Le annotazioni si applicano a variabili, parametri e valori di ritorno:
+
 ```python
+nome: str = "Mario"
+età: int = 30
+
 def saluta(nome: str) -> str:
     return f"Ciao, {nome}"
 ```
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
+> **Importante**: le type hint **non vengono verificate a runtime**. Python non solleva errori se passi un `int` a una funzione che si aspetta una `str`. Servono per analisi statica e leggibilità.
 
 <!-- New subsection -->
 
-### Typing
+### Tipi composti con `typing`
 
-Il modulo builtin `typing` fornisce molti tipi. Per quelli di base il tipo di dato può essere usato per rappresentare il tipo stesso in versioni recenti:
+Per tipi più complessi si usa il modulo `typing` (in versioni recenti di Python molti tipi sono usabili direttamente):
 
-- `list[int]` per liste di interi (`List[int]` in precedenti versioni).
-- `dict[str, int]` per dizionari con chiave stringa e valore intero (`Dict[str, int]` in precedenti versioni).
-- `Union[str, int]` (o `str` o `int`) per funzioni con parametri o valori di ritorno “ibridi”.
-- `Optional[int]` equivalente a `Union[int, None]`.
-- `tuple[int, int]` per una tupla di 2 interi (`Tuple[int, int]` in precedenti versioni). Come valore di ritorno, indica che vengono restituiti 2 valori interi.
+```python
+# Collezioni
+prezzi: list[float] = [1.99, 2.50, 3.75]
+utenti: dict[str, int] = {"Mario": 30, "Anna": 25}
+
+# Tipi opzionali e unioni
+from typing import Optional, Union
+
+def trova_utente(id: int) -> Optional[str]:
+    # restituisce una stringa oppure None
+    ...
+
+def parse(valore: Union[str, int]) -> str:
+    # accetta sia str che int
+    ...
+```
+
+`Optional[X]` è equivalente a `Union[X, None]` ed è il caso più comune.
 
 <!-- New subsection -->
 
-Vantaggi:
+### Vantaggi pratici
 
-- **Leggibilità**: chi legge il codice sa già che tipo di dati aspettarsi o restituire.
-- **Strumenti statici**: prevengono bug rilevando incompatibilità tra i tipi.
-- **IDE Completion**: gli IDE (Visual Studio Code, PyCharm) possono suggerire completamenti più precisi.
+- **Leggibilità**: chi legge il codice sa subito cosa aspettarsi senza dover dedurre dal contesto.
+- **Autocompletamento IDE**: VS Code e PyCharm usano le annotazioni per suggerimenti più precisi.
+- **Bug catturati prima dell'esecuzione**: con un type checker, molti errori emergono in fase di sviluppo invece che in produzione.
+- **Documentazione viva**: a differenza dei commenti, le annotazioni non possono "diventare obsolete" silenziosamente perché sono parte del codice.
 
 <!-- New subsection -->
 
-### Mypy
+### Type checking con mypy
 
-[mypy](http://mypy-lang.org/) è il tool più diffuso per il _type checking_ statico in Python. Esegue un’analisi del codice e segnala eventuali situazioni di mismatch tra tipi dichiarati e uso effettivo.
-
-Installazione e utilizzo tipici:
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
+[mypy](http://mypy-lang.org/) è il tool più diffuso per la verifica statica dei tipi. Analizza il codice **senza eseguirlo** e segnala ogni incoerenza tra tipi dichiarati e tipi effettivamente usati.
 
 ```bash
 pip install mypy
 mypy nomefile.py
 ```
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-<!-- New subsection -->
-
 Esempio:
+
 ```python
-def add_numbers(a: int, b: int) -> int:
+def somma(a: int, b: int) -> int:
     return a + b
 
-x = add_numbers("10", 20)  # Errore rilevato da mypy
+risultato = somma("10", 20)   # mypy segnala l'errore qui
 ```
-Mypy segnala che il primo argomento è `str` anziché `int`. Questo permette di trovare bug prima ancora di eseguire il codice.
 
-- `mypy --strict`: abilita controlli più severi (verifiche su variabili senza tipo, ecc.).
-- configurazione via `mypy.ini` o sezione `[tool.mypy]` di `pyproject.toml`.
+```bash
+error: Argument 1 to "somma" has incompatible type "str"; expected "int"
+```
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
+Senza mypy questo errore si scoprirebbe solo a runtime, quando Python tenta di concatenare `"10" + 20` e solleva un `TypeError`.
 
 <!-- New subsection -->
 
-### Altri tool di type checking
+### Configurazione e altri tool
 
-- [Pyright](https://github.com/microsoft/pyright): sviluppato da Microsoft, è un type checker veloce scritto in TypeScript. Spesso integrato nell’estensione “Pylance” di Visual Studio Code.
-- [pyre](https://pyre-check.org/): è un type checker scritto in OCaml and ottimizzato per la performance.
-- [pytype](https://github.com/google/pytype): è un type checker che controlla e inferisce il tipo per codice senza tipi annotati.
+mypy si configura tramite la sezione `[tool.mypy]` di `pyproject.toml` (o un file `mypy.ini` separato). L'opzione `--strict` abilita controlli più severi, utili per progetti maturi.
+
+Esistono alternative:
+- **Pyright** (Microsoft): più veloce, integrato nell'estensione *Pylance* di VS Code.
+- **pyre** (Meta), **pytype** (Google): meno diffusi, usati principalmente nei rispettivi ecosistemi aziendali.
+
+Per progetti nuovi, mypy o Pyright sono le scelte standard.
 
 <!-- New section -->
 
-## 6. **Logging e monitoraggio**
-
-Quando si sviluppano applicazioni in Python, un buon sistema di logging e strumenti di monitoraggio aiutano a tracciare l’esecuzione e a diagnosticare eventuali problemi, specialmente in ambito Data Analytics e Machine/Deep Learning.
+## 5. **Logging, monitoraggio e configurazione**
 
 <!-- New subsection -->
 
-### Logging con la libreria standard
+Quando un programma cresce, due esigenze diventano centrali:
+- **tracciare cosa succede** durante l'esecuzione (per debug, audit, monitoraggio)
+- **separare i parametri dal codice**, in modo da poter cambiare configurazione senza toccare i sorgenti
 
-Python fornisce un modulo di logging integrato, configurabile a più livelli (DEBUG, INFO, WARNING, ERROR, CRITICAL).
+Vediamo gli strumenti standard di Python per entrambe.
 
-Un esempio minimo:
+<!-- New subsection -->
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
+### Perché non usare `print`?
+
+`print` è veloce da scrivere ma ha limiti seri:
+- non distingue tra messaggi informativi, di debug e di errore
+- non si può "spegnere" facilmente in produzione
+- non include automaticamente timestamp, modulo di origine o contesto
+- scrive solo su stdout
+
+Il modulo `logging` della libreria standard risolve tutti questi problemi.
+
+<!-- New subsection -->
+
+### Logging: uso base
 
 ```python
 import logging
 
 logging.basicConfig(level=logging.INFO)
 
-logging.info("Questo è un messaggio di Info")
-logging.error("Questo è un messaggio di Errore")
+logging.debug("Dettaglio per sviluppatori")    # non viene mostrato (sotto INFO)
+logging.info("Caricamento dataset completato")
+logging.warning("File di config non trovato, uso default")
+logging.error("Connessione al DB fallita")
 ```
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
+<!-- New subsection -->
+
+I cinque livelli standard, in ordine crescente di gravità:
+
+| Livello    | Quando usarlo                                  |
+|------------|------------------------------------------------|
+| `DEBUG`    | Dettagli interni utili durante lo sviluppo     |
+| `INFO`     | Eventi normali del flusso (avvio, completamento) |
+| `WARNING`  | Qualcosa di anomalo ma non bloccante           |
+| `ERROR`    | Un'operazione è fallita                         |
+| `CRITICAL` | Errore grave che compromette l'applicazione    |
+
+Impostando `level=logging.INFO`, i messaggi di livello inferiore (`DEBUG`) vengono ignorati. È sufficiente cambiare una riga per attivare/disattivare la verbosità in produzione.
 
 <!-- New subsection -->
 
-Il modulo `logging` in Python offre la possibilità di personalizzare ulteriormente la configurazione del log tramite *handler* e *formatter*. 
+### Configurazioni più ricche
 
-- Un **handler** specifica “dove” vogliamo inviare i messaggi di log (console, file, email, syslog, ecc.).  
-- Un **formatter** definisce il formato del messaggio (incluso timestamp, livello del log, nome del modulo, testo dell’evento).
-
-<!-- New subsection -->
+Per progetti reali si configurano *handler* (dove inviare i log: console, file, syslog...) e *formatter* (formato del messaggio):
 
 ```python
-# Creiamo un handler che invia il log su console
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
-# Creiamo un handler che invia il log su file
-file_handler = logging.FileHandler("app.log")
-file_handler.setLevel(logging.DEBUG)
-
-# Definiamo il formatter con informazioni dettagliate
 formatter = logging.Formatter(
-    "[%(asctime)s] [%(name)s] [%(levelname)s] %(message)s",
+    "[%(asctime)s] [%(levelname)s] %(name)s: %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 
-# Assegniamo il formatter a entrambi gli handler
-console_handler.setFormatter(formatter)
-file_handler.setFormatter(formatter)
+# Handler per console
+console = logging.StreamHandler()
+console.setFormatter(formatter)
+logger.addHandler(console)
 
-# Aggiungiamo gli handler al logger
-logger.addHandler(console_handler)
+# Handler per file
+file_handler = logging.FileHandler("app.log")
+file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 ```
 
 <!-- New subsection -->
 
-### Altri tool di logging: Loguru
-
-[Loguru](https://github.com/Delgan/loguru) è una libreria third-party che semplifica la gestione dei log in Python, ponendosi come alternativa al modulo standard `logging`. Principalmente, mira a togliere la necessità di configurazioni manuali di logger, handler, formatter e filtri in modo ripetitivo.
-
-- **Semplicità di inizializzazione**: fornisce un logger pre-configurato pronto all'uso, senza dover creare `Logger`, `Handler` o `Formatter`.  
-- **Formattazione predefinita**: offre di default un formato semplice con inclusi timestamp e livello.  
-- **Rotazione automatica**: “rotazioni” per scartare messaggi di log sulla base della dimensione del file, data o numero di backup.  
-- **Stack trace migliorati**: eccezioni con stack trace colorate e leggibili.  
-- **Filtri immediati**: filtrare i log a livello di singola funzione o modulo.
+ Esistono alternative come [Loguru](https://github.com/Delgan/loguru), che semplificano la configurazione iniziale.
+ 
+ Per progetti ML, [Weights & Biases](https://wandb.ai/) (wandb) è lo standard per il *tracking di esperimenti*: lo vedremo nella parte sull'ottimizzazione degli iperparametri.
 
 <!-- New subsection -->
 
-<img src="img/loguru_demo.gif" alt="drawing" height="600"/>
+### tqdm: barre di progresso
 
-<!-- New subsection -->
-
-### Monitoraggio del progresso con tqdm
-
-**tqdm** è una libreria che mostra barre di progresso e stime di completamento quando si itera su elementi di una lista, un file o altri oggetti iterabili.
-
-<!-- New subsection -->
+In contesti ML/DL si lavora spesso con loop lunghi (training di modelli, preprocessing di dataset). [tqdm](https://github.com/tqdm/tqdm) trasforma qualsiasi iterabile in una barra di progresso con stima del tempo residuo:
 
 ```python
 from tqdm import tqdm
 import time
-for i in tqdm(range(100)):
-    time.sleep(0.1)
+
+for i in tqdm(range(100), desc="Training"):
+    time.sleep(0.05)
 ```
 
-![](img/tqmd_output.png)
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-<!-- New subsection -->
-
-[Weights & Biases](https://wandb.ai/site) è un servizio pensato per il tracciamento di esperimenti e la visualizzazione di metriche in ambito Machine/Deep Learning.
-
-Alcune funzionalità chiave:
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-- **Tracciamento parametri e metriche**: salvataggio di learning rate, batch size, epoch, accuracy, loss e ogni altra statistica necessaria.
-- **Dashboard online**: visualizzazione in tempo reale di curve di apprendimento, confusione matrix e comparazione fra run differenti.
-- **Backup modelli**: archivio versioni dei modelli addestrati e ripristino immediato.
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-<!-- New subsection -->
-
-Il seguente è un esempio di utilizzo semplificato in un contesto di addestramento di un modello ML/DL:
-
-```python
-import wandb
-
-wandb.init(project="experiment-xyz")
-
-wandb.config.learning_rate = 0.001
-wandb.config.batch_size = 32
-
-for epoch in range(10):
-    # esecuzione addestramento ...
-    wandb.log({"epoch": epoch, "loss": current_loss, "accuracy": current_accuracy})
-```
-
-alla fine dell'esecuzione, wandb mostrerà un resoconto dei parametri ed eseguirà l'upload della run e dei dati associati ad essa.
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-<!-- New subsection -->
-
-In ambienti di Machine/Deep Learning, un log esaustivo dei parametri e delle metriche risulta essenziale per confrontare esperimenti, replicare risultati e valutare miglioramenti.
-
-> Dimostrazione Weights & Biases (wandb)
-> [Report pubblico d'esempio](https://wandb.ai/stacey/saferlife/reports/SafeLife-Benchmark-Experiments--Vmlldzo0NjE4MzM)
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-<!-- New section -->
-
-## 7. **Configurazione e gestione parametri**
-
-<!-- New subsection -->
-
-Spesso è controproducente “fissare” i valori dei parametri direttamente nel codice (hardcoded). Parametri come percorsi di file, indirizzi di database o iperparametri di modelli di Machine Learning possono (e dovrebbero) essere definiti esternamente, per rendere il software:
-- **Dinamico**: non serve modificare il codice ogni volta che cambia un parametro.  
-- **Riproducibile**: salvando i parametri in configurazioni, chiunque può replicare esattamente le stesse condizioni di esecuzione.  
-- **Scalabile**: è più semplice automatizzare multiple esecuzioni cambiando solo pochi valori in un file di config.
-
-<!-- New subsection -->
-
-### argparse
-
-La libreria [argparse](https://docs.python.org/3/library/argparse.html) (inclusa nella standard library) facilita la definizione di opzioni da riga di comando, rendendo l’esecuzione del programma parametrizzabile.
-
-Una volta configurato possiamo usare il nostro script nel modo seguente:
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
+Output:
 ```bash
-python main.py --input_files mydata1.csv mydata2.csv --epochs 20 --activation_func gelu
+Training:  47%|████▋     | 47/100 [00:02<00:02, 19.84it/s]
 ```
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-<!-- New subsection -->
-
-La cui definizione è la seguente:
-
-<div class="pre-no-max-height">
-
-```python
-from argparse import ArgumentParser as parser
-
-def main():
-    parser(description="Esempio di parametri da CLI")
-    parser.add_argument(
-        "--input_files", type=str, default="dataset.csv",
-        nargs='+', help="Uno o più percorsi ai file di input"
-    )
-    parser.add_argument("--epochs", type=int, default=10, help="Numero di epoche di training")
-    parser.add_argument(
-        "--activation_func", type="str", choices=["relu","gelu"],
-        default="relu", help="Funzione di attivazione"
-    )
-
-    args = parser.parse_args()
-
-    print(f"File di input: {args.input_files}")
-    print(f"Epoche: {args.epochs}")
-
-if __name__ == "__main__":
-    main()
-```
-
-</div>
+Funziona anche con `range`, liste, file, generatori e si integra nativamente con Pandas (`tqdm.pandas()`) e con i loop di training di PyTorch.
 
 <!-- New subsection -->
 
-### File di configurazione (yaml, ini, json)
+### Configurazione: file YAML
 
-Se i parametri diventano numerosi o complicati, è spesso preferibile un file di configurazione (es. .yaml, .ini o .json).
+Mettere parametri direttamente nel codice (*hardcoded*) è una cattiva pratica:
+- per cambiare un valore bisogna modificare il sorgente
+- è difficile tracciare quale configurazione ha prodotto un certo risultato
+- non si possono confrontare run diverse
 
-Vantaggi:
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-- **Organizzazione**: parametri divisi in sezioni (config di sistema, config di modello, credenziali, ecc.).
-- **Versionamento**: i file config possono essere inclusi nel repository Git per condividere setup predefiniti.
-- **Facilità di modifica**: non è necessario toccare il codice sorgente, basta aprire il file di config.
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
+La soluzione è esternalizzare i parametri in un **file di configurazione**. Il formato più diffuso è **YAML**, particolarmente leggibile e adatto a strutture annidate.
 
 <!-- New subsection -->
+
+### Esempio YAML
+
+`config.yaml`:
 
 ```yaml
 model:
-  epochs: 30
-  batch_size: 64
+  type: random_forest
+  n_estimators: 100
+  max_depth: 10
 data:
-  input_file: "data/train.csv"
-  validation_file: "data/val.csv"
-logging:
-  level: "INFO"
+  train_path: "data/train.csv"
+  val_path: "data/val.csv"
+  batch_size: 64
+training:
+  epochs: 30
+  learning_rate: 0.001
+  device: cuda
 ```
+
+<!-- New subsection -->
+
+Caricamento in Python con la libreria `pyyaml`:
 
 ```python
 import yaml
 
-with open("config.yaml", "r") as f:
+with open("config.yaml") as f:
     config = yaml.safe_load(f)
 
-epochs = config["model"]["epochs"]
-batch_size = config["model"]["batch_size"]
+print(config["model"]["n_estimators"])   # 100
+print(config["training"]["learning_rate"]) # 0.001
 ```
 
-<!-- New subsection -->
-
-### Altri Tool di Configurazione
-
-Oltre ad `argparse` e ai classici file di configurazione (`.yaml`, `.ini`, `.json`), esistono framework pensati per gestire configurazioni complesse e modulari. Due di questi sono [Hydra](https://hydra.cc/) e [OmegaConf](https://omegaconf.readthedocs.io/), che spesso si usano in sinergia, ma possono funzionare separatamente.
+`yaml.safe_load` restituisce un normale dizionario Python annidato.
 
 <!-- New subsection -->
 
-**Hydra**  
-   - Gestisce più *file di configurazione* (YAML) unendoli tramite composizione in un’unica super-config.  
-   - Permette l’override a riga di comando, variando parametri come `model.epochs=50 data.input_file="otherdata.csv"`.  
-   - Gestisce plugin e integrazioni per job in parallelo o su cluster.
+### Vantaggi della configurazione esterna
 
-**OmegaConf**  
-   - Dizionari/liste flessibili con `DictConfig` e `ListConfig`.  
-   - Include meccanismi di interpolazione, utili per evitare doppioni (ad es. `lr: ${model.learning_rate}`).  
-   - Hydra lo usa nativamente, ma può essere usato anche da solo.
+- **Riproducibilità**: il file di config va in Git insieme al codice, quindi ogni esperimento è documentato.
+- **Sperimentazione rapida**: cambiare iperparametri richiede solo modifica del file, niente ricompilazione né rilancio dell'IDE.
+- **Separazione delle preoccupazioni**: il codice descrive *come* fare le cose, il config descrive *con quali parametri*.
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-<!-- New subsection -->
-
-Esempio di utilizzato di Hydra e OmegaConf:
-
-```python
-import hydra
-from omegaconf import DictConfig, OmegaConf
-
-@hydra.main(version_base=None, config_path=".", config_name="config")
-def main(cfg: DictConfig):
-    print(f"Epoche: {cfg.training.epochs}")
-    print(f"Learning rate: {cfg.training.lr}")
-    print(f"File di input: {cfg.data.input_file}")
-    print(OmegaConf.to_yaml(cfg))
-
-if __name__ == "__main__":
-    main()
-```
-
-<!-- New section -->
-
-## 8. **Strumenti di profilazione**
-
-Ottimizzare le prestazioni di un’applicazione Python richiede di capire quali parti del codice richiedono più tempo o consumano più memoria. Esistono svariati strumenti *profiler* per identificare punti critici e colli di bottiglia (_bottleneck_).
-
-<!-- New subsection -->
-
-### Profilazione temporale
-
-[cProfile](https://docs.python.org/3/library/profile.html) è un profiler built-in di Python. Sebbene fornisca tempi dettagliati e un'estesa interfaccia, può essere verboso e limitato.
-
-![](img/cprofile_output.png)
-
-<!-- New subsection -->
-
-[pyinstrument](https://github.com/joerick/pyinstrument) è un profiler “sampling-based”, quindi anziché tracciare ogni singolo evento (come **cProfile**), prende “istantanee” periodiche dello stack, fornendo report più sintetici e immediati. Non è altamente ottimizzato e non offre funzionalità avanzate come altri tool, ma rappresenta una semplice soluzione.
-
-<!-- New subsection -->
-
-<div class="cols">
-
-<div>
-
-Installazione e utilizzo base:
-
-```bash
-pip install pyinstrument
-pyinstrument myscript.py
-```
-
-</div>
-
-<div>
-
-Utilizzato direttamente sugli script come nell'esempio, restituisce un output colorato, evidenziando le porzioni più lente.
-
-<img src="img/pyinstrument_output.png" alt="drawing" height="400"/>
-
-</div>
-
-</div>
-
-<!-- New subsection -->
-
-Nei contesti di Machine/Deep Learning sono anche utili tool più specializzati, come [PyTorch Profiling](https://pytorch.org/tutorials/recipes/recipes/profiler_recipe.html).
-
-<!-- New subsection -->
-
-Esempio d'uso e output:
-
-```python
-import torch
-from torch.profiler import profile, record_function, ProfilerActivity
-
-with profile(
-    activities=[ProfilerActivity.CPU],
-    profile_memory=True
-) as prof:
-    model(inputs)
-
-print(prof.key_averages().table(sort_by="cpu_memory_usage"))
-```
-
-```json
----------------------------------  ------------  ------------  ------------
-                             Name       CPU Mem  Self CPU Mem    # of Calls
----------------------------------  ------------  ------------  ------------
-                      aten::empty      94.79 Mb      94.79 Mb           121
-                 aten::batch_norm      47.41 Mb           0 b            20
-                     aten::conv2d      47.37 Mb           0 b            20
-                 aten::max_pool2d      11.48 Mb           0 b             1
-    aten::max_pool2d_with_indices      11.48 Mb      11.48 Mb             1
----------------------------------  ------------  ------------  ------------
-Self CPU time total: 53.064ms
-```
-
-<!-- New subsection -->
-
-### Profilazione spaziale
-
-In Python non c'è una libreria nativa per monitorare l'uso della memoria durante l'esecuzione di codice. Questo tipo di profilazione è utile specialmente in casi d'uso che riportano un'eccessiva generazione di oggetti oppure quando è necessario ridurre al minimo l'uso della memoria (es. programmi embedded).
-
-<!-- New subsection -->
-
-[memory-profiler](https://github.com/pythonprofilers/memory_profiler) è uno strumento che consente di tracciare l’uso della memoria per singola riga di codice. Si integra con uno speciale decoratore @profile, ma il progetto non è più mantenuto.
-
-```python
-@profile
-def heavy_function():
-    data = [x for x in range(10**7)]
-    return sum(data)
-
-if __name__ == "__main__":
-    heavy_function()
-```
-
-se eseguito con `python -m memory_profiler main.py` non necessita l'import di `profile`.
-
-<!-- New subsection -->
-
-Come PyTorch Profiler, PyTorch fornisce anche dei tool più precisi per esplorare l'[uso della memoria CUDA](https://pytorch.org/docs/stable/torch_cuda_memory.html). Il tool registra lo storico dell'uso della memoria e crea uno snapshot che può essere visualizzato tramite un'interfaccia web dedicata.
-
-<!-- New subsection -->
-
-Esempio d'uso e output:
-
-<div class="cols">
-
-```python
-import torch
-
-torch.cuda.memory._record_memory_history()
-
-run_your_code()
-torch.cuda.memory._dump_snapshot("my_snapshot.pickle")
-```
-
-<img src="img/active_memory_timeline.png" alt="drawing" height="500"/>
-
-</div>
-
-<!-- New subsection -->
-
-### Scalene: eccellente soluzione unica
-
-[Scalene](https://github.com/plasma-umass/scalene) è un profiler ad alte prestazioni, specializzato sia nell’analisi temporale che spaziale su CPU e GPU a livello di singola linea di codice.  
-Scalene utilizza un approccio **sampling-based** estremamente ottimizzato e fornisce informazioni dettagliate sulla percentuale di tempo spesa in CPU, GPU e sull’utilizzo della memoria, evidenziando la porzione di codice responsabile di un carico eccessivo.  
-
-Offre inoltre funzionalità di **profilazione multithread** e **adattamento dinamico**, senza introdurre overhead significativo sulle prestazioni. Le analisi eseguite dagli autori dimostrano una maggior disponibilità di funzioni, esecuzione rapida e precisione nei tempi riportati.
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-<!-- New subsection -->
-
-Similmente ad altri tool, può essere usato da linea di comando nel modo seguente:
-
-```bash
-scalene your_prog.py                     # profilo completo con interfaccia web
-scalene --cpu your_prog.py               # profila solo CPU
-scalene --reduced-profile your_prog.py   # profile solo righe più onerose
-```
-
-Alla fine del processo, creerà un'interfaccia web interattiva per permettere all'utente di esplorare i dati di profilazione estratti da scalene, a meno che non venga passato il parametro `--cli` per restituire l'output sul terminale.
-
-<!-- New subsection -->
-
-Può anche essere usato all'interno del codice per profilare solo certe sezioni:
-
-```python
-from scalene import scalene_profiler
-
-scalene_profiler.start()
-
-# codice da profilare
-
-scalene_profiler.stop()
-```
-
-opppure decorando le funzioni senza importare la libreria ed eseguendo con Scalene:
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
-```python
-# do not import profile!
-
-@profile
-def slow_function():
-    import time
-    time.sleep(3)
-```
-
-<!-- .element: class="fragment" data-fragment-index="1" -->
+> Per esigenze più avanzate (override da CLI, composizione di più file di config, gestione di esperimenti su cluster) esistono framework come [Hydra](https://hydra.cc/) e [OmegaConf](https://omegaconf.readthedocs.io/), molto usati in ambito ML.
