@@ -326,6 +326,9 @@ index.html
 # env
 .env
 
+#venv
+venv
+
 # Jupyter
 .ipynb_checkpoints
 *.csv

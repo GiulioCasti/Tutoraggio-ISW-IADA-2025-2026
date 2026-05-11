@@ -4,7 +4,7 @@ from concurrent.futures import ProcessPoolExecutor
 
 
 def is_prime(n):
-    """Verifica se un numero è primo. Generato da Claude 3.7 Sonnet"""
+    """Verifica se un numero è primo."""
     if n <= 1:
         return False
     elif n <= 3:
