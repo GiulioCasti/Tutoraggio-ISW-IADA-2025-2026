@@ -22,10 +22,6 @@ Tutoraggio del corso di [Ingegneria del Software](https://unica.coursecatalogue.
 | [2](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/2-UML/) | Esercitazione UML |
 | [3](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/3-Git/) | Git e GitHub |
 | [4](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/4-BestPractices/) | Best Practices |
-<!-- | [4.1](https://github.com/giuliocasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/data_analytics.ipynb) | Ottimizzazione Esecuzione (Data Analytics) |
-| [4.2](https://github.com/giuliocasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/optimization.ipynb) | Ottimizzazione Esecuzione (Computing Optimization) |
-| [4.3](https://github.com/giuliocasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/parallelism.ipynb) | Ottimizzazione Esecuzione (Parallelism) |
-| [4.4](https://github.com/giuliocasti/Tutoraggio-ISW-IADA-2025-2026/blob/main/lezioni/4-Optimization/hyperparameter_optimization.ipynb) | Ottimizzazione Esecuzione (Hyperparameter Optimization) |
 | [5](https://giuliocasti.github.io/Tutoraggio-ISW-IADA-2025-2026/lezioni/5-TestingPublishing/) | Testing, CI e Pubblicazione | -->
 
 </div>

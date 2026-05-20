@@ -22,17 +22,21 @@ In questa sezione approfondiremo le tecniche di testing in Python e il processo 
 
 Il debug è un processo fondamentale nello sviluppo software, che permette di individuare e risolvere gli errori nel codice. Python offre strumenti integrati per facilitare questa attività.
 
-### Il modulo pdb
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
+### Il modulo pdb
+<!-- .element: class="fragment" data-fragment-index="1"-->
 
 Il Python Debugger (`pdb`) è un modulo della libreria standard che fornisce funzionalità di debugging interattivo. Permette di:
+
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
 - Eseguire il codice passo-passo
 - Ispezionare variabili durante l'esecuzione
 - Impostare breakpoint condizionali
 - Esaminare lo stack delle chiamate
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
 
 <!-- New subsection -->
 
@@ -90,18 +94,43 @@ Queste interfacce sono spesso più intuitive rispetto all'uso diretto di pdb, ma
 
 Nel software engineering, esistono diversi tipi di test che servono a verificare aspetti diversi dell'applicazione. I principali sono:
 
+<!-- New subsection -->
+
 ### Unit Test
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
 I test unitari verificano il funzionamento di singole unità di codice (funzioni, metodi o classi) in isolamento.
+
 **Caratteristiche**:
+
 - Testano una funzionalità specifica
 - Sono rapidi da eseguire
 - Non dipendono da componenti esterni (DB, servizi web, filesystem)
 - Seguono spesso il pattern Arrange-Act-Assert (AAA)
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
+
+<!-- New subsection -->
+
+Esempio: il test di una funzione che somma due numeri, strutturato secondo le tre fasi del pattern AAA.
+
+```python
+# La funzione da testare
+def somma(a, b):
+    return a + b
+
+
+# Il test strutturato con il pattern AAA
+def test_somma_numeri_positivi():
+    # 1. ARRANGE (Prepara i dati di partenza)
+    primo_numero = 5
+    secondo_numero = 3
+    risultato_atteso = 8
+
+    # 2. ACT (Esegui la funzione)
+    risultato_ottenuto = somma(primo_numero, secondo_numero)
+
+    # 3. ASSERT (Verifica se il calcolo è corretto)
+    assert risultato_ottenuto == risultato_atteso
+```
 
 <!-- New subsection -->
 
@@ -110,6 +139,7 @@ I test unitari verificano il funzionamento di singole unità di codice (funzioni
 I test di integrazione verificano l'interazione tra diversi componenti o sistemi.
 
 **Caratteristiche**:
+
 - Testano il funzionamento combinato di più unità
 - Possono richiedere l'uso di mocking o servizi di test
 - Verificano il corretto passaggio di dati tra componenti
@@ -122,6 +152,7 @@ I test di integrazione verificano l'interazione tra diversi componenti o sistemi
 I test di accettazione verificano se l'applicazione soddisfa i requisiti di business e le aspettative degli utenti.
 
 **Caratteristiche**:
+
 - Basati su scenari d'uso e criteri di accettazione
 - Spesso eseguiti dal punto di vista dell'utente finale
 - Possono essere sia automatizzati che manuali
@@ -154,6 +185,9 @@ Un approccio equilibrato al testing prevede una "piramide" con:
 <!-- New section -->
 
 ## 3. Assertions e unittest
+
+<!-- New subsection -->
+
 
 ### Assertions
 
@@ -223,6 +257,8 @@ Il modulo unittest fornisce vari metodi per effettuare asserzioni:
 - `assertFalse(x)`: verifica che bool(x) è False
 - `assertIs(a, b)`: verifica che a is b
 - `assertIsNot(a, b)`: verifica che a is not b
+<!-- New subsection -->
+
 - `assertIsNone(x)`: verifica che x is None
 - `assertIsNotNone(x)`: verifica che x is not None
 - `assertIn(a, b)`: verifica che a in b
@@ -259,6 +295,9 @@ Esistono anche `setUpClass` e `tearDownClass` per inizializzazioni e pulizia a l
 <!-- New section -->
 
 ## 4. PyTest: fixtures, monkeypatch, mock
+
+<!-- New subsection -->
+
 
 ### Introduzione a PyTest
 
@@ -378,7 +417,27 @@ def test_get_weather(monkeypatch):
 
 ### Mock di unittest
 
-Per situazioni più complesse, PyTest può utilizzare il modulo `unittest.mock`:
+Quando il codice da testare dipende da elementi esterni (come database, API online o file system), i test possono diventare lenti o instabili. 
+
+In questi casi si usano i **Mock**: oggetti "controfigura" che simulano il comportamento di componenti reali in modo controllato.
+
+<!-- New subsection -->
+
+Guida rapida ai comandi dei Mock:
+
+- `Mock()`: Crea un oggetto generico vuoto. Qualsiasi attributo o metodo si provi a chiamare su questo oggetto verrà creato dinamicamente al volo senza lanciare errori.
+
+- `return_value`: Indica al mock quale valore deve restituire quando viene invocato come una funzione o un metodo (es. mock_db.count.return_value = 5).
+
+<!-- New subsection -->
+
+- `@patch("percorso.modulo")`: Un decoratore che sostituisce un intero modulo o una funzione nel codice reale durante l'esecuzione del test, inserendo un mock al suo posto.
+
+- `assert_called_once_with(...)`: Una verifica fornita dai mock. Non controlla cosa restituisce il codice, ma controlla come si è comportato, assicurandosi che la dipendenza esterna sia stata chiamata con i parametri corretti.
+
+<!-- New subsection -->
+
+Ecco come utilizzare il modulo standard unittest.mock integrandolo con PyTest:
 
 ```python
 from unittest.mock import Mock, patch
@@ -488,6 +547,9 @@ Una buona copertura dei test non garantisce l'assenza di bug, ma riduce signific
 <!-- New section -->
 
 ## 6. Continuous Delivery e Deployment con GitHub
+
+<!-- New subsection -->
+
 
 ### Continuous Integration (CI)
 

@@ -16,6 +16,9 @@ dependencies = [
     "numpy>=1.22.0",
 ]
 
+[tool.setuptools.packages.find]
+where = ["src"]     
+
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0.0",
