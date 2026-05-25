@@ -14,17 +14,13 @@ classifiers = [
 ]
 dependencies = [
     "numpy>=1.22.0",
-]
-
-[tool.setuptools.packages.find]
-where = ["src"]     
-
-[project.optional-dependencies]
-dev = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
     "coverage>=7.0.0",
 ]
+
+[tool.setuptools.packages.find]
+where = ["src"]     
 
 [build-system]
 requires = ["setuptools>=65.0.0", "wheel"]
