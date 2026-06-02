@@ -15,7 +15,7 @@ def main():
     print("Calcolo della mediana...")
     
     # Inseriamo un breakpoint per esaminare l'esecuzione
-    breakpoint()
+    # breakpoint()
     
     risultato = mediana(dati)
     

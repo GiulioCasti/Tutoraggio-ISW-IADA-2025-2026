@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.0"
+   width="324"
+   height="442"
+   id="svg2"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
+   sodipodi:docname="20220711015344!LampFlowchart.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   style="background-color: white;"
+   >
+  <metadata
+     id="metadata41">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2400"
+     inkscape:window-height="1261"
+     id="namedview39"
+     showgrid="false"
+     inkscape:zoom="1.5102009"
+     inkscape:cx="113.89213"
+     inkscape:cy="263.21001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <defs
+     id="defs5">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 221 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="324 : 221 : 1"
+       inkscape:persp3d-origin="162 : 147.33333 : 1"
+       id="perspective43" />
+  </defs>
+  <g
+     transform="translate(-3, 1)"
+     id="g2203">
+    <path
+       d="M 89.625,193.1875 L 89.625,226.5"
+       style="fill: none; fill-opacity: 0.75; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1.875; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1;"
+       id="path2197" />
+    <path
+       d="M 81.0625,221.75 L 98.1875,221.75 L 89.75,238.875 L 81.0625,221.75 z "
+       style="fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1.875; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1;"
+       id="path2201" />
+  </g>
+  <use
+     transform="translate(0, -145)"
+     id="use2207"
+     x="0"
+     y="0"
+     width="350"
+     height="450"
+     xlink:href="#g2203" />
+  <use
+     transform="translate(0, 145.875)"
+     id="use2209"
+     x="0"
+     y="0"
+     width="350"
+     height="450"
+     xlink:href="#g2203" />
+  <use
+     transform="matrix(0, -1, 1, 0, -33.7812, 379.375)"
+     id="use2211"
+     x="0"
+     y="0"
+     width="350"
+     height="450"
+     xlink:href="#g2203" />
+  <use
+     transform="matrix(0, -1, 1, 0, -33.7812, 233.875)"
+     id="use2213"
+     x="0"
+     y="0"
+     width="350"
+     height="450"
+     xlink:href="#g2203" />
+  <rect
+     width="145.5"
+     height="42.5"
+     rx="10"
+     ry="10"
+     x="13.875"
+     y="9.75"
+     style="opacity: 1; fill: rgb(255, 191, 201); fill-opacity: 1; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1.875; stroke-linecap: round; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0pt; stroke-opacity: 1;"
+     id="rect1312" />
+  <rect
+     width="108.91647"
+     height="42.5"
+     rx="10.00001"
+     ry="10"
+     x="206.57301"
+     y="125.75"
+     style="opacity: 1; fill: rgb(139, 239, 145); fill-opacity: 1; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1.875; stroke-linecap: round; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0pt; stroke-opacity: 1;"
+     id="rect2187" />
+  <use
+     transform="translate(2.70378, 145.75)"
+     id="use2189"
+     x="0"
+     y="0"
+     width="350"
+     height="450"
+     xlink:href="#rect2187" />
+  <use
+     transform="translate(-174.406, 262.875)"
+     id="use2191"
+     x="0"
+     y="0"
+     width="350"
+     height="450"
+     xlink:href="#rect2187" />
+  <path
+     d="M 86.75,96.75 L 9.25,147.25 L 86.5,197.75 L 164,147.25 L 86.75,96.75 z "
+     style="fill: rgb(255, 255, 138); fill-opacity: 1; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1.875; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1;"
+     id="path2193" />
+  <use
+     transform="translate(0, 145.5)"
+     id="use2195"
+     x="0"
+     y="0"
+     width="350"
+     height="450"
+     xlink:href="#path2193" />
+  <text
+     x="86.070297"
+     y="35.1367"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:103%;font-family:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;inline-size:116.339;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="text2215"
+     xml:space="preserve"
+     transform="translate(0.359375,-6.7438877)"><tspan
+       x="86.070297"
+       y="35.1367"
+       id="tspan3">Lampadina
+</tspan><tspan
+       x="86.070297"
+       y="51.616701"
+       id="tspan4">non funzionante</tspan></text>
+  <text
+     x="173.73801"
+     y="132.043"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:0%;font-family:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="text2245"
+     xml:space="preserve"><tspan
+       x="173.73801"
+       y="132.043"
+       id="tspan2247">No</tspan></text>
+  <text
+     x="173.73801"
+     y="278.043"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:0%;font-family:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="text2257"
+     xml:space="preserve"><tspan
+       x="173.73801"
+       y="278.043"
+       id="tspan2259">Sì</tspan></text>
+  <text
+     x="108.691"
+     y="357.633"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:0%;font-family:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="text2261"
+     xml:space="preserve"><tspan
+       x="108.691"
+       y="357.633"
+       id="tspan2263">No</tspan></text>
+  <text
+     x="110.285"
+     y="213.633"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:0%;font-family:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="text2189"
+     xml:space="preserve"><tspan
+       x="110.285"
+       y="213.633"
+       id="tspan2191">Sì</tspan></text>
+  <text
+     x="86.070297"
+     y="35.1367"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:103%;font-family:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;inline-size:116.339;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="text2215-9"
+     xml:space="preserve"
+     transform="translate(-0.03125,107.91627)"><tspan
+       x="86.070297"
+       y="35.1367"
+       id="tspan5">Lampadina
+</tspan><tspan
+       x="86.070297"
+       y="51.616701"
+       id="tspan6">collegata?</tspan></text>
+  <text
+     x="86.070297"
+     y="35.1367"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:103%;font-family:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;inline-size:116.339;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="text2215-9-2"
+     xml:space="preserve"
+     transform="translate(174.78906,107.85767)"><tspan
+       x="86.070297"
+       y="35.1367"
+       id="tspan7">Collega
+</tspan><tspan
+       x="86.070297"
+       y="51.616701"
+       id="tspan8">lampadina</tspan></text>
+  <text
+     x="86.070297"
+     y="35.1367"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:103%;font-family:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;inline-size:116.339;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="text2215-9-8"
+     xml:space="preserve"
+     transform="translate(-0.03125,255.00611)"><tspan
+       x="86.070297"
+       y="35.1367"
+       id="tspan9">Lampadina
+</tspan><tspan
+       x="86.070297"
+       y="51.616701"
+       id="tspan10">bruciata?</tspan></text>
+  <text
+     x="86.070297"
+     y="35.1367"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:103%;font-family:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;inline-size:116.339;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="text2215-9-2-1"
+     xml:space="preserve"
+     transform="translate(177.49284,253.60767)"><tspan
+       x="86.070297"
+       y="35.1367"
+       id="tspan11">Sostituisci
+</tspan><tspan
+       x="86.070297"
+       y="51.616701"
+       id="tspan12">lampadina</tspan></text>
+  <text
+     x="86.070297"
+     y="35.1367"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:103%;font-family:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;inline-size:116.339;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="text2215-9-2-1-5"
+     xml:space="preserve"
+     transform="translate(0.3830625,370.63502)"><tspan
+       x="86.070297"
+       y="35.1367"
+       id="tspan13">Ripara
+</tspan><tspan
+       x="86.070297"
+       y="51.616701"
+       id="tspan14">lampadina</tspan></text>
+</svg>
