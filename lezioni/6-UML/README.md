@@ -541,6 +541,35 @@ La domanda da porsi è: **la parte può vivere senza il tutto?**
 
 <!-- New subsection -->
 
+### Molteplicità
+
+La **molteplicità** indica *quante* istanze di una classe possono essere
+collegate a un'istanza dell'altra. Si scrive **a ciascun estremo**
+dell'associazione e si legge "attraversando" la linea.
+
+| Notazione | Significato                |
+|-----------|----------------------------|
+| `1`       | esattamente uno            |
+| `0..1`    | zero o uno (opzionale)     |
+| `*` o `0..*` | zero o più (nessun limite) |
+| `1..*`    | uno o più (almeno uno)     |
+| `2..4`    | intervallo specifico       |
+
+<!-- New subsection -->
+
+Per leggerla si fissa un'istanza di un estremo e ci si chiede *con quante*
+istanze dell'altro estremo è in relazione:
+
+<img src="img/classi_m.png" height="250"/>
+
+- Un **Autore** scrive **`0..*`** Articoli → appena registrato può non averne ancora scritto nessuno
+<!-- .element: class="fragment" -->
+
+- Un **Articolo** è scritto da **`1`** Autore → ogni articolo ha sempre ed esattamente un autore
+<!-- .element: class="fragment" -->
+
+<!-- New subsection -->
+
 ### Come costruire un diagramma delle classi
 
 Domande da porsi prima di disegnare: 
